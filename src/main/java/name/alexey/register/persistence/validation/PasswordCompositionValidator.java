@@ -19,7 +19,7 @@ public class PasswordCompositionValidator implements ConstraintValidator<Passwor
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext context) {
-        if( aDigit.matcher(s).matches() && aLowercaseLetter.matcher(s).matches() && aUppercaseLetter.matcher(s).matches()) {
+        if( s != null && aDigit.matcher(s).matches() && aLowercaseLetter.matcher(s).matches() && aUppercaseLetter.matcher(s).matches()) {
             return true;
         }
         context.buildConstraintViolationWithTemplate( context.getDefaultConstraintMessageTemplate()).addConstraintViolation();
