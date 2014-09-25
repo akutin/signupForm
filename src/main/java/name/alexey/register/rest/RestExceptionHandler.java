@@ -1,5 +1,6 @@
 package name.alexey.register.rest;
 
+import name.alexey.register.service.NotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
@@ -21,6 +22,13 @@ class RestExceptionHandler {
 	@ExceptionHandler(value = Exception.class)
     @ResponseBody
 	public RestException exception(Exception exception, WebRequest request) {
+		return new RestException( exception.getMessage());
+	}
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+	@ExceptionHandler(value = NotFoundException.class)
+    @ResponseBody
+	public RestException notFound(Exception exception, WebRequest request) {
 		return new RestException( exception.getMessage());
 	}
 
