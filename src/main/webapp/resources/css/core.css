@@ -1,0 +1,10 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+form .error-container {
+    color: #bb1f34;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <link href="resources/css/core.css" rel="stylesheet" media="screen"/>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/bootbox/4.2.0/bootbox.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-noty/2.2.2/packaged/jquery.noty.packaged.min.js"></script>
+
+    <script src="resources/js/register.js"></script>
+
+</head>
+<body ng-app="registerApp">
+<form role="form" name="signupForm" class="form-horizontal" ng-controller="signupController" novalidate>
+    <legend>Please Register</legend>
+    <div class="form-group" ng-class="{ 'has-error' : signupForm.username.$invalid && !signupForm.username.$pristine }">
+        <label for="email" class="col-md-2 control-label">Username</label>
+        <div class="col-md-10">
+            <input type="text" name="username" class="form-control" id="username" placeholder="Desired username" ng-model="account.username" required />
+            <div class="error-container" ng-show="signupForm.username.$dirty && signupForm.username.$invalid">
+                <small class="error">{{validationErrors('username')}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : signupForm.email.$invalid && !signupForm.email.$pristine }">
+        <label for="email" class="col-md-2 control-label">Email</label>
+        <div class="col-md-10">
+            <input type="text" name="email" class="form-control" id="email" placeholder="Email address" ng-model="account.email" required />
+            <div class="error-container" ng-show="signupForm.email.$dirty && signupForm.email.$invalid">
+                <small class="error">{{validationErrors('email')}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : signupForm.password.$invalid && !signupForm.password.$pristine }">
+        <label for="password" class="col-md-2 control-label">Password</label>
+        <div class="col-md-10">
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password"  ng-model="account.password" required />
+            <div class="error-container" ng-show="signupForm.password.$dirty && signupForm.password.$invalid">
+                <small class="error">{{validationErrors('password')}}</small>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="!signupForm.$dirty">Register</button>
+        </div>
+    </div>
+</form>
+</body>
+</html>
